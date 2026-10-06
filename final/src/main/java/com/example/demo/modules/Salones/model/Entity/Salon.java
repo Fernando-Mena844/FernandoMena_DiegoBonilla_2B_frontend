@@ -1,9 +1,12 @@
 package com.example.demo.modules.Salones.model.Entity;
 
+import com.example.demo.modules.Eventos.model.Entity.Evento;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.util.List;
 
 @Getter @Setter @ToString
 @Entity
@@ -21,4 +24,7 @@ public class Salon {
     private Double precio_renta;
     @Column(name="UBICACION")
     private String ubicacion;
+
+    @OneToMany(mappedBy = "id_salon")
+    private List<Evento> eventos;
 }

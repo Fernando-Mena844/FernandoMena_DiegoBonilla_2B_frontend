@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/api/salones")
@@ -43,9 +44,15 @@ public class SalonController {
     public ResponseEntity<ApiResponse<SalonDTO>> obtenerSalon(@PathVariable Long id){
         try{
             SalonDTO dto = service.obtenerSalon(id);
-            ApiResponse<SalonDTO> response = new ApiResponse<>(true, "Salón obtenido correctamente", dto);
-            log.info("Salón obtenido correctamente");
-            return ResponseEntity.status(HttpStatus.OK).body(response);
+            if(dto!=null){
+                ApiResponse<SalonDTO> response = new ApiResponse<>(true, "Salón obtenido correctamente", dto);
+                log.info("Salón obtenido correctamente");
+                return ResponseEntity.status(HttpStatus.OK).body(response);
+            }else{
+                log.info("No existe el salón con ID ");
+                ApiResponse<SalonDTO> notFound = new ApiResponse<>(false, "No existe el salón con ID "+id);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(notFound);
+            }
         } catch (Exception e) {
             e.printStackTrace();
             ApiResponse<SalonDTO> responseError = new ApiResponse<>(false, "Error al obtener el salón");

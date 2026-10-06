@@ -1,9 +1,12 @@
 package com.example.demo.modules.Clientes.model.Entity;
 
+import com.example.demo.modules.Eventos.model.Entity.Evento;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.util.List;
 
 @Getter @Setter @ToString
 @Entity
@@ -23,4 +26,7 @@ public class Cliente {
     private String email;
     @Column(name = "DIRECCION")
     private String direccion;
+
+    @OneToMany(mappedBy = "id_cliente")
+    private List<Evento> eventos;
 }

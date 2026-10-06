@@ -48,7 +48,7 @@ public class SalonService {
 
     //GETBYID
     public SalonDTO obtenerSalon(Long id){ //Pendiente de arreglar
-        Salon ent = repo.findById(id).orElseThrow(()-> new RuntimeException());
+        Salon ent = repo.findById(id).orElseThrow(()-> new RuntimeException("Salón no encontrado con id " + id));
         return convertiraDTO(ent);
     }
 }
