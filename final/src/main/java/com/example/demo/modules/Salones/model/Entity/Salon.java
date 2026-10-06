@@ -1,4 +1,4 @@
-package com.example.demo.modules.Eventos.model.Entity;
+package com.example.demo.modules.Salones.model.Entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -6,8 +6,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Getter @Setter @ToString
-@Table(name="EVENTOS")
-public class EventoEntity {
+@Table(name="SALONSES")
+public class Salon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID_SALON")
