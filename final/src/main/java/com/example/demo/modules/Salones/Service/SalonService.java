@@ -37,7 +37,7 @@ public class SalonService {
     }
 
     //GET
-    public List<SalonDTO> listarSalones(){
+    public List<SalonDTO> listarSalones(){ //Pendiente de arreglar
         List<Salon> list = repo.findAll();
         List<SalonDTO> listDTO = new ArrayList<>();
         for(Salon ent : list){
@@ -47,7 +47,7 @@ public class SalonService {
     }
 
     //GETBYID
-    public SalonDTO obtenerSalon(Long id){
+    public SalonDTO obtenerSalon(Long id){ //Pendiente de arreglar
         Salon ent = repo.findById(id).orElseThrow(()-> new RuntimeException());
         return convertiraDTO(ent);
     }
